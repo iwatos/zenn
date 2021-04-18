@@ -1,17 +1,6 @@
 ---
-title: "GASでAPI開発する"
-emoji: "🦁"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: [gas, typescript]
-published: false
+title: "環境構築"
 ---
-# はじめに
-今回の記事で作成した内容はこちらからクローンできます。
-適宜設定変更して利用してください。
-https://github.com/iwatos/gas-template
-
-また、GASデプロイ/公開の詳しい内容は本記事では説明はしてません。
-
 # GASプロジェクトの準備
 プロジェクト用ディレクトリ名: `gas-project-directory`
 プロジェクト名: `gas-project`
@@ -23,6 +12,7 @@ mkdir gas-project-directory
 cd gas-project-directory
 ```
 
+# claspを用意
 以下のpackage.jsonをフォルダ直下に作成後、yarnかnpmでinstallを実行します
 GASのローカル開発で用いる`clasp`のほか、`typescript` `eslint` `prettier`を導入してます。
 
@@ -107,9 +97,14 @@ console.log("hello gas world!!")
 yarn run tsc
 ```
 distフォルダとmain.jsファイルが作成されていれば成功です。
+念の為動作を確認します
+```sh
+node dist/main.js
+# hello gas world!! と出ればOK
+```
 
 # ESLint、prettier導入
-先程の`yarn install`で導入したTypeScriptrの設定ファイルを作成します。
+先程の`yarn install`で導入したESLint,prettierの設定ファイルを作成します。
 以下の`.eslintrc.json` `.prettierrc.json` をディレクトリ直下に作成します。
 こちらの設定に詳しい方はご自由に内容を変更しても大丈夫です。
 
@@ -144,6 +139,41 @@ yarn run eslint './src/**/*.{js,ts}'
 ```
 
 以上でESLint、prettier導入もこれで完了です。
+簡単に実行しやすいようにコマンドを追加しておきましょう
+```diff json:package.json
+{
+  // 省略
++  "scripts": {
++    "lint": "prettier './src/**/*.{js,ts}' && eslint './src/**/*.{js,ts}'",
++    "lintfix": "prettier --write './src/**/*.{js,ts}' && eslint --fix './src/**/*.{js,ts}'",
++  },
+  // 省略
+}
+```
 
-# 
-`clasp　push`はクラウドへのプッシュと同時に TS ⇨ JS 変換も行いますので、TSコンパイルはローカルで行う必要はありません。
+# pushの対象設定
+ローカルで生成したdistフォルダをプッシュするための設定をします。
+実はGASはtypescriptの状態でpushをしても自動でコンパイルをしてプッシュしてくれるのですが。
+tsconfigの設定を反映させたいためにdistフォルダをプッシュするようにします
+
+まず`.clasp.json`にpush対象の設定をします
+```diff json:.clasp.json
+{
+  "scriptId": "1n326kT-w55WXF7UBGRQuCYIRQ2qz3LEBK_22y3c-8K0xxsjZw4gHCfL9"
++ "rootDir": "dist" 
+}
+```
+
+さらにpush対象の中にappscript.jsonを入れる必要があるため、
+`package.json`にてGAプッシュ用のコマンドを作成します。
+```diff json:package.json
+{
+  // 省略
+  "scripts": {
+    "lint": "prettier './src/**/*.{js,ts}' && eslint './src/**/*.{js,ts}'",
+    "lintfix": "prettier --write './src/**/*.{js,ts}' && eslint --fix './src/**/*.{js,ts}'",
++   "push": "cp appsscript.json dist/appsscript.json && clasp push"
+  },
+  // 省略
+}
+```
