@@ -172,7 +172,7 @@ tsconfigの設定を反映させたいためにdistフォルダをプッシュ�
   "scripts": {
     "lint": "prettier './src/**/*.{js,ts}' && eslint './src/**/*.{js,ts}'",
     "lintfix": "prettier --write './src/**/*.{js,ts}' && eslint --fix './src/**/*.{js,ts}'",
-+   "push": "cp appsscript.json dist/appsscript.json && clasp push"
++   "push": "cp appsscript.json dist/appsscript.json && clasp push -f"
   },
   // 省略
 }
