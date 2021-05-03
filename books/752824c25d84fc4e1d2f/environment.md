@@ -64,8 +64,8 @@ clasp create gas-project
 
 
 # ソースコードの配置
-プロジェクト用ディレクトリの直下にソースコード`src`ディレクトリを作成します
-その配下にサンプルとしてhelloworldのコードを置いておきます。
+プロジェクト用ディレクトリの直下にソースコード`src`ディレクトリを作成し、
+その配下に`main.ts`ファイルとしてhelloworldのコードを配置します。
 ```ts:src/main.ts
 console.log("hello gas world!!")
 ```
@@ -166,13 +166,15 @@ tsconfigの設定を反映させたいためにdistフォルダをプッシュ�
 
 さらにpush対象の中にappscript.jsonを入れる必要があるため、
 `package.json`にてGAプッシュ用のコマンドを作成します。
+
+eslint,prettierを実行した後typescriptをコンパイルしたものをプッシュするコマンドになります
 ```diff json:package.json
 {
   // 省略
   "scripts": {
     "lint": "prettier './src/**/*.{js,ts}' && eslint './src/**/*.{js,ts}'",
     "lintfix": "prettier --write './src/**/*.{js,ts}' && eslint --fix './src/**/*.{js,ts}'",
-+   "push": "cp appsscript.json dist/appsscript.json && clasp push -f"
++   "push": "yarn lintfix && cp appsscript.json dist/appsscript.json && tsc && clasp push -f"
   },
   // 省略
 }
