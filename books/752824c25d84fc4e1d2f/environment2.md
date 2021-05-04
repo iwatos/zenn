@@ -101,45 +101,8 @@ APIを修正する時に本番環境をいじるのは怖いので、検証と�
       "lintfix": "prettier --write './src/**/*.{js,ts}' && eslint --fix './src/**/*.{js,ts}'",
       "push": "yarn lintfix && cp appsscript.json dist/appsscript.json && tsc && clasp push -f",
 -     "deploy": "yarn push && clasp deploy -i <デプロイID>"
-+     "deploy-develop": "yarn push && clasp deploy -i <検証用のデプロイID>"
++     "deploy-develop": "yarn push && clasp deploy -i <検証用のデプロイID>",
 +     "deploy-production": "yarn push && clasp deploy -i <本番用のデプロイID>"
 },
 ```
-
-# ログの確認
-以上でコーディング〜デプロイ、動作確認までローカルでできるようになりました。
-ですが現状では以下の問題があります。
-- 動作確認をするのに毎回デプロイ（本番更新）が必要
-- console.logなどログがローカルから確認できない
-
-これらの問題点を解決するためにGCPの設定をします。
-
-まずGCPでプロジェクトを作成します
-https://console.cloud.google.com/
-
-claspにプロジェクトIDを設定します
-以下のコマンドを打つと.clasp.jsonに設定値が追加されます
-```sh
-clasp setting projectId XXXXX
-```
-
-次に`casp open`でGASエディタを開き 設定ボタンからGCPプロジェクト番号を設定します。
-
-Oauthの同意設定が必要なので
-https://console.developers.google.com/apis/credentials/consent?project=[PROJECT_ID]
-外部→作成ボタン
-アプリ名、ユーザサポートメール、メールアドレスを設定して次
-スコープ、テストユーザーはなしでOK
-リダイレクトURLに`http://localhost`を追加
-
-`clasp open --creds`を実行
-
-# 認証情報を作成
-OAuthクライアントID作成
-デスクトップアプリを選択
-名前を設定して作成
-信頼できるユーザに自分のアドレスを追加
-
-ファイルダウンロードし、creds.jsonという名前でディレクトリ直下に配置
-
-clasp login --creds creds.json
+これらもcurlコマンドを叩いて応答が来ればOKです。
