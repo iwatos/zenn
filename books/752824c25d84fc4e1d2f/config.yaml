@@ -1,10 +1,9 @@
 title: "GASでAPIを開発"
 summary: "GASでAPIを開発"
 topics: ["gas", "typescript", "clasp","api"]
-published: false
+published: true
 price: 0
 chapters:
-  - about-gas
   - environment
   - environment2
   - environment3

@@ -1,5 +1,5 @@
 ---
-title: "環境構築"
+title: "環境構築 プロジェクト作成からGASサーバへのPush"
 ---
 # GASプロジェクトの準備
 プロジェクト用ディレクトリ名: `gas-project-directory`
@@ -15,7 +15,7 @@ cd gas-project-directory
 # git環境作成
 環境構築をしていく過程で、認証情報やビルド成果物などのpushしたくないファイルが出てくるので、
 `git init`をした後に、先にプロジェクト直下に以下の`.gitignore`を作成しておきましょう。
-```gitignore:.gitgnore
+```
 dist/**
 node_modules/**
 .clasp.json
