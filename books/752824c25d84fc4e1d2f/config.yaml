@@ -1,5 +1,5 @@
-title: "GASをローカルで開発する！"
-summary: "GASを極力ローカルで快適に開発する方法について説明します。また、typescriptも使用します。現在執筆中で環境構築の章がほぼ完成してます"
+title: "GASでAPIを、ローカルで開発する！"
+summary: "GASでを極力ローカルで快適に開発する方法について説明します。また、typescriptも使用します。現在執筆中で環境構築の章がほぼ完成してます"
 topics: ["gas", "typescript", "clasp","api"]
 published: true
 price: 0
