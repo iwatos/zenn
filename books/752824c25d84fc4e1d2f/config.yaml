@@ -8,7 +8,7 @@ summary: "
 成果物として、GASでスプレッドシートの内容をJson形式で返却するAPIを作成します。
 "
 topics: ["gas", "typescript", "clasp","api"]
-published: false
+published: true
 price: 500
 chapters:
   - about-gas
