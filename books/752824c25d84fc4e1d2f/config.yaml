@@ -1,9 +1,16 @@
-title: "GASでAPIを、ローカルで開発する！"
-summary: "GASでを極力ローカルで快適に開発する方法について説明します。また、typescriptも使用します。現在執筆中で環境構築の章がほぼ完成してます"
+title: "GASを使ってAPI開発 with TypeSctipt in ローカル環境 <全編無料>"
+summary: "
+<環境構築より先は執筆中>
+無料で利用できるGAS（GoogleAppsScript）を利用したAPIの開発について解説します。
+言語はTypeScriptを用います。
+またGASはブラウザエディタでコーディングできますが、本書で極力ブラウザを使わずローカルで開発する方法を環境構築の部分から説明します。
+
+成果物として、GASでスプレッドシートの内容をJson形式で返却するAPIを作成します。
+"
 topics: ["gas", "typescript", "clasp","api"]
 published: false
-price: 0
+price: 500
 chapters:
+  - about-gas
   - environment
-  - environment2
-  - environment3
+  - develop
