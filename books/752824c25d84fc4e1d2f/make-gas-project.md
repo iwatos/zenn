@@ -42,7 +42,7 @@ https://script.google.com/home
 ```diff json:.clasp.json
 {
   "scriptId": "<固有のスクリプトID>"
-+ "rootDir": "dist" ＿
++ "rootDir": "dist"
 }
 ```
 
