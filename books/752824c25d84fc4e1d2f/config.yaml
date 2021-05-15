@@ -13,7 +13,6 @@ summary: "
 topics: ["gas", "typescript", "clasp","api"]
 published: true
 price: 500
-toc_depth: 1
 chapters:
   - about-gas
   - make-local-environment
