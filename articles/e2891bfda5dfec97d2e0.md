@@ -3,7 +3,7 @@ title: "すぐできる効率化Tips"
 emoji: "🔖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [mac]
-published: true
+published: false
 ---
 
 # はじめに
